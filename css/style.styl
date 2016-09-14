@@ -4,6 +4,18 @@
 transitionTiming=cubic-bezier(0.455, 0.030, 0.515, 0.955)
 vendors=official
 
+// Fonts
+@font-face {
+  font-family: 'MontserratLight';
+  src: url('../fonts/Montserrat-Light.woff') format('woff');
+  src: url('../fonts/Montserrat-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DosisLight';
+  src: url('../fonts/Dosis-Light.woff') format('woff');
+  src: url('../fonts/Dosis-Light.woff2') format('woff2');
+}
+
 // Mixins
 fullWidth() {
   width: 100%;
@@ -56,9 +68,9 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'MontserratLight', sans-serif;
   font-size: 1.6rem;
-  font-weight: 300;
+  font-weight: 400;
   color: #fff;
   background-color: #000;
   overflow: hidden;
@@ -69,8 +81,8 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Dosis', sans-serif;
-  font-weight: 100;
+  font-family: 'DosisLight', sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -183,6 +195,24 @@ nav, .card {
   }
 }
 
+.page:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  fullWidth();
+  margin-bottom: 0.2%;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0;
+  transition: .25s transitionTiming all;
+
+  &.open {
+    opacity: .5;
+  }
+}
+
 .background {
   position: absolute;
   top: 0;
@@ -200,10 +230,10 @@ nav, .card {
   }
 
   &.yali {
-    background-image: url("../assets/yali.png");
+    background-image: url("../assets/yali.jpg");
   }
   &.metro {
-    background-image: url("../assets/metro.png");
+    background-image: url("../assets/metro.jpg");
   }
 }
 
@@ -218,19 +248,6 @@ nav, .card {
     opacity: 1;
     -webkit-filter: blur(0);
     transform: translateX(0) skewX(0);
-  }
-}
-
-@keyframes loading {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
   }
 }
 
@@ -511,6 +528,12 @@ nav {
 */
   }
 
+  .project {
+    &:first-child .card {
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+  }
+
   .cards {
     flex-direction: column;
   }
@@ -520,10 +543,6 @@ nav {
     height: 50vh;
     margin: 0;
     border: 0;
-
-      &:not(:last-child) {
-        border-bottom: 1px solid rgba(255,255,255,.2);
-      }
 
       .go {
         width: 6rem;

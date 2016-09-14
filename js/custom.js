@@ -12,9 +12,13 @@ $('.project, .back').click(function expandCard() {
 
   //Add Background
   $(".background", this).toggleClass('open');
-  
+
   //Cleanup Back Button
   $(".back").click(function(){
     $(".page, .page .content *, .background").removeClass('open');
   });
+
+  //Progress Circle
+  $(".loading").toggleClass('open');
+  $(".inner").toggleClass('open');
 });

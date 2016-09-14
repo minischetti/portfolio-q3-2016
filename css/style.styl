@@ -2,10 +2,6 @@
 
 // Variables
 transitionTiming=cubic-bezier(0.455, 0.030, 0.515, 0.955)
-//accent=#dc9d23
-accent=#000
-accent=#6624e2
-black05=rgba(0,0,0,.05)
 vendors=official
 
 // Mixins
@@ -39,21 +35,6 @@ centerItem() {
 }
 
 //Animations
-@keyframes rainbow {
-  0% {
-    -webkit-filter: hue-rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    -webkit-filter: hue-rotate(360deg);
-    filter: hue-rotate(360deg);
-  }
-}
-
-.rainbow {
-  animation: rainbow 60s infinite;
-  color: accent;
-}
 
 // General Styles
 ::selection {
@@ -122,9 +103,13 @@ nav, .card {
 }
 
 //Flex
-.cards, .card, .page {
+.cards, .card, .page, .project {
   display: flex;
   margin: auto;
+}
+
+.project {
+  margin: auto 0;
 }
 
 //Cards
@@ -149,9 +134,6 @@ nav, .card {
   }
 
   &.shrink {
-    width: 0;
-    height: 0;
-    margin-right: 0;
     transform: scale(0);
     -webkit-filter: blur(10px);
     opacity: 0;
@@ -215,6 +197,7 @@ nav, .card {
 .background {
   position: absolute;
   top: 0;
+  left: 0;
   fullWidth();
   margin-bottom: 0.2%;
   background-size: cover;
@@ -265,6 +248,9 @@ nav, .card {
 .page {
   hidden();
   fullWidth();
+  position: absolute;
+  top: 0;
+  left: 0;
 
   &.open {
     visible();
@@ -355,23 +341,6 @@ nav, .card {
     transition-delay: .75s;
   }
 }
-
-/*
-.loading {
-  fullWidth();
-  centerItem();
-  noSelect();
-  background-color: black;
-  z-index: 5;
-  opacity: 0;
-  transition: .5s all transitionTiming;
-
-  &.open {
-    opacity: 1;
-  }
-}
-
-*/
 
 @keyframes loading {
   0% {

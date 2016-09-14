@@ -14,21 +14,19 @@
   <body>
     <nav>
       <span class="connect">Connect</span>
-      <span id="second" class="back">Back</span>
+      <span class="back" onclick="expandCard()">Back</span>
       <div class="menu">
         <a href="https://www.linkedin.com/in/domminischetti" target="_blank">LinkedIn</a>
         <a href="mailto:domminischetti@gmail.com" target="_blank">Email</a>
         <a href="https://twitter.com/DomMinischetti" target="_blank">Twitter</a>
       </div>
     </nav>
-    <span class="loading">
-      <span class="inner">
-      </span>
-    </span>
     <div class="cards">
-      <div id="metro" class="card">
-        <h2>Metro</h2>
-        <span class="button info">?</span>
+      <div id="metro" class="project">
+        <div class="card">
+          <h2>Metro</h2>
+          <span class="button info">?</span>
+        </div>
         <div class="page">
           <div class="content">
             <h1>Metro</h1>
@@ -36,10 +34,13 @@
             <a href="http://metroforsteam.com/" target="blank" class="button go">Go</a>
           </div>
         </div>
+        <div class="background metro"></div>
       </div>
-      <div id="yali" class="card">
-        <h2>Yali</h2>
-        <span class="button info">?</span>
+      <div id="yali" class="project">
+        <div class="card">
+          <h2>Yali</h2>
+          <span class="button info">?</span>
+        </div>
         <div class="page">
           <div class="content">
             <h1>Yali</h1>
@@ -47,20 +48,14 @@
             <a href="https://www.thebusinessofgoodfilm.com/" target="blank" class="button go">Go</a>
           </div>
         </div>
+        <div class="background yali"></div>
       </div>
-    </div>
-    <div class="background yali"></div>
-    <div class="background metro"></div>
-    <div class="background"></div>
+    <span class="loading">
+      <span class="inner">
+      </span>
+    </span>
     <div class="loading"></div>
     <script src="js/jquery.js"></script>
     <script src="js/custom.js"></script>
-    <script src="js/scrollto.js"></script>
-    <script src="js/scrolltrigger.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function(){
-        ScrollTrigger.init();
-    });
-    </script>
   </body>
 </html>

@@ -60,9 +60,6 @@ html, body {
   fullWidth();
 }
 
-html, body  {
-}
-
 html {
   font-size: 10px;
 }
@@ -115,18 +112,27 @@ nav, .card {
 }
 
 //Flex
-.cards, .card, .page, .project {
+.projects, .card, .page, .project {
   display: flex;
   margin: auto;
 }
 
 .project {
   margin: auto 0;
+
+  .card {
+    animation: .5s cardIn transitionTiming;
+    animation-delay: 1.75s;
+    animation-fill-mode: backwards;
+  }
+
+  &:last-child .card {
+    animation-delay: 2s;
+  }
 }
 
-//Cards
-
-.cards {
+//Projects
+.projects {
   height: 100vh;
   justify-content: center;
 }
@@ -150,7 +156,6 @@ nav, .card {
     -webkit-filter: blur(10px);
     opacity: 0;
     border-color: transparent;
-
   }
 
   &, & * {
@@ -176,40 +181,6 @@ nav, .card {
     transform: translate(-50%,-50%) scale(0);
     -webkit-filter: blur(3px);
     hidden();
-
-    &.close {
-      hidden();
-      transform: translate(-50%,-50%) scale(0);
-    }
-  }
-
-  h2 {
-    &.open {
-    }
-    &.close {
-      transform: scale(0);
-    }
-  }
-  span {
-    box-sizing: border-box;
-  }
-}
-
-.page:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  fullWidth();
-  margin-bottom: 0.2%;
-  background-size: cover;
-  background-position: center center;
-  z-index: -1;
-  opacity: 0;
-  transition: .25s transitionTiming all;
-
-  &.open {
-    opacity: .5;
   }
 }
 
@@ -223,7 +194,7 @@ nav, .card {
   background-position: center center;
   z-index: -1;
   opacity: 0;
-  transition: .25s transitionTiming all;
+  transition: .35s transitionTiming all;
 
   &.open {
     opacity: .5;
@@ -234,20 +205,6 @@ nav, .card {
   }
   &.metro {
     background-image: url("../assets/metro.jpg");
-  }
-}
-
-
-@keyframes slideRight {
-  0% {
-    opacity: 0;
-    -webkit-filter: blur(3px);
-    transform: translateX(-5%) skewX(-10deg);
-  }
-  100% {
-    opacity: 1;
-    -webkit-filter: blur(0);
-    transform: translateX(0) skewX(0);
   }
 }
 
@@ -283,7 +240,7 @@ nav, .card {
       opacity: 1;
       -webkit-filter: blur(0);
       transform: translateY(0);
-      transition-delay: .25s;
+      transition-delay: .35s;
     }
   }
   p {
@@ -301,14 +258,15 @@ nav, .card {
 }
 
 .button {
+  box-sizing: border-box;
   width: 8rem;
   height: 8rem;
   line-height: 8rem;
   text-transform: uppercase;
   text-align: center;
   font-size: 1.6rem;
-
 }
+
 //Border
 .button:after {
   display: inline-block;
@@ -321,7 +279,7 @@ nav, .card {
   border: 1px solid rgba(255,255,255,.2);
   border-radius: 50%;
   box-sizing: border-box;
-  transition: .25s all transitionTiming;
+  transition: .35s all transitionTiming;
 }
 
 //Hover
@@ -335,6 +293,7 @@ nav, .card {
   transform: scale(.95);
   opacity: .5;
 }
+
 .go {
   opacity: 0;
   -webkit-filter: blur(3px);
@@ -388,7 +347,7 @@ nav, .card {
   transform: scale(0);
   border-radius: 100%;
   background-color: rgba(255,255,255,.1);
-  transition: .25s all transitionTiming;
+  transition: .35s all transitionTiming;
 
   &.open {
     transform: scale(1);
@@ -408,7 +367,7 @@ nav, .card {
     &.open {
       width: 100%;
       height: 100%;
-      animation: 1.25s loadingInner transitionTiming;
+      animation: 1.35s loadingInner transitionTiming;
       animation-fill-mode: both;
     }
   }
@@ -425,11 +384,11 @@ nav, .card {
   visibility: hidden;
   transform: translateX(-25%);
   -webkit-filter: blur(3px);
-  transition: .25s all transitionTiming;
+  transition: .35s all transitionTiming;
 
 
   &.open {
-    transition-delay: .25s;
+    transition-delay: .35s;
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
@@ -447,7 +406,7 @@ nav {
   -webkit-backdrop-filter: blur(6px);
 
   &, span, a {
-    transition: .25s all transitionTiming;
+    transition: .35s all transitionTiming;
   }
 
   span:hover, a:hover {
@@ -477,6 +436,7 @@ nav {
   text-transform: uppercase;
   opacity: 0;
   animation: .5s slideLeft transitionTiming;
+  animation-delay: 1.5s;
   animation-fill-mode: both;
 }
 
@@ -488,7 +448,7 @@ nav {
   line-height: 6rem;
   text-transform: uppercase;
   -webkit-filter: blur(3px);
-  transition: .25s all transitionTiming;
+  transition: .35s all transitionTiming;
 
   a:not(:last-child) {
     margin-right: 2rem;
@@ -502,7 +462,6 @@ nav {
 }
 
 @media (max-width: 768px) {
-
   h1 {
     font-size: 3.6rem;
   }
@@ -521,11 +480,6 @@ nav {
       padding-bottom: 2rem;
       box-sizing: border-box;
     }
-/*
-    &.open-mobile {
-      padding-top: 12rem;
-    }
-*/
   }
 
   .project {
@@ -534,7 +488,7 @@ nav {
     }
   }
 
-  .cards {
+  .projects {
     flex-direction: column;
   }
 
@@ -563,4 +517,75 @@ nav {
       width: 100%;
       text-align: center;
     }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(3px);
+    transform: translateY(-25%);
+  }
+  25% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+    transform: translateX(0);
+  }
+  75% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-filter: blur(3px);
+    transform: translateY(25%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    visible();
+  }
+  100% {
+    hidden();
+  }
+}
+
+@keyframes cardIn {
+  0% {
+  opacity: 0;
+  transform: scale(0);
+  -webkit-filter: blur(3px);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-filter: blur(0);
+  }
+}
+
+//Welcome Page
+#welcome {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #000;
+  fullWidth();
+  animation: .35s fadeOut transitionTiming;
+  animation-delay: 1.35s;
+  animation-fill-mode: both;
+  noSelect();
+
+  h1 {
+    margin: auto;
+    animation: 1.5s slideDown transitionTiming;
+    animation-fill-mode: both;
+  }
 }
